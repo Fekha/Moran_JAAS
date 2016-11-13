@@ -17,6 +17,7 @@ import javax.security.auth.Subject;
 import javax.security.auth.login.*;
 
 import ExamplePackage.RootAction; 
+import ExamplePackage.Driver; 
 
 
 /* 
@@ -34,19 +35,17 @@ import ExamplePackage.RootAction;
 
 public class LoginContextExample {
 	
-		
-    static LoginContext lc; 	
-    static ArrayList<Employee> list = new ArrayList<Employee>();
-    
-    public static void main(String[] args) {
+	 LoginContext lc; 	
+	 ArrayList<Employee> list = new ArrayList<Employee>();
+	 
+    LoginContextExample() {
     	
-		LoginContextExample lce = new LoginContextExample();
-		
-		/* Create a call back handler. This call back handler will be populated with
-                 * different callbacks by the various login modules. For example, 
-                 * if a login module implements a username/password style login, it populates this object
-                 * with NameCallback (to get username) and PasswordCallback (which gets password).
-		 */
+    	    
+    	 /* Create a call back handler. This call back handler will be populated with
+	      * different callbacks by the various login modules. For example, 
+	      * if a login module implements a username/password style login, it populates this object
+	      * with NameCallback (to get username) and PasswordCallback (which gets password).
+	      */
 		CallBackHandlerExample cbe = new CallBackHandlerExample(); 
 		
 		/* Create a new login context. 
@@ -54,7 +53,7 @@ public class LoginContextExample {
 		 *                      and it is called "JAASExample"
 		 * @param Call Back Handler
 		 */
-		try {
+	    try {
 			lc = new LoginContext("JAASExample", cbe);
 		}
 		catch (LoginException e) {
@@ -66,7 +65,7 @@ public class LoginContextExample {
 		for(Employee emp : list) {
 			System.out.println(emp.FNID_Print());
 	    }
-
+	
 		addEmployee(new Employee("a","b","c","d","e"));
 		list = getEmployees();
 		*/
@@ -105,9 +104,9 @@ public class LoginContextExample {
 		catch (SecurityException e) {
 			System.out.println(" " + e);
 		}
-	}
+    }
     
-    public static ArrayList<Employee> getEmployees(){
+    public ArrayList<Employee> getEmployees(){
 		ArrayList<Employee> EDBL = new ArrayList<Employee>();
 		String[] emps = null;
         String strTxt = "example/EmployeeDB.txt";
@@ -132,7 +131,7 @@ public class LoginContextExample {
 		return EDBL;
 	}
 
-	public static void addEmployee(Employee e){
+	public void addEmployee(Employee e){
 			System.out.print(e.FirstName+e.Id+e.Position+e.NameAndIdOfSupervisor+e.Salary);
 		    
 		    FileWriter fWriter = null;
@@ -148,7 +147,7 @@ public class LoginContextExample {
 		    	c.printStackTrace();
 		    }
 	}
-	public static void addAccount(String FN, String ID, String User, String Pass){    
+	public void addAccount(String FN, String ID, String User, String Pass){    
 	    FileWriter fWriter = null;
 	    BufferedWriter writer = null;
 	    try {

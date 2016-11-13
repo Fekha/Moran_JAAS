@@ -10,7 +10,6 @@ import javax.security.auth.callback.UnsupportedCallbackException;
 
 
 public class CallBackHandlerExample implements CallbackHandler {
-
 	/* 
 	 * Checks what authentication handlers the user has configured and calls them.
 	 * @see javax.security.auth.callback.CallbackHandler#handle(javax.security.auth.callback.Callback[])
@@ -49,9 +48,6 @@ public class CallBackHandlerExample implements CallbackHandler {
 		if (numCallBacks < 2) {
 			throw new UnsupportedCallbackException(callbacks[0], 
 					"Invalid or no callbacks.");
-		}
-	
-		
+		}	
 	}
-
 }
