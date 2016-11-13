@@ -15,15 +15,15 @@ public class CallBackHandlerExample implements CallbackHandler {
 	 * Checks what authentication handlers the user has configured and calls them.
 	 * @see javax.security.auth.callback.CallbackHandler#handle(javax.security.auth.callback.Callback[])
 	 */
-	public void handle(Callback[] arg0) throws IOException,
+	public void handle(Callback[] callbacks) throws IOException,
 			UnsupportedCallbackException {
 		int numCallBacks = 0; 
-		for (int i=0; i < arg0.length; i++) {
+		for (int i=0; i < callbacks.length; i++) {
 			/* 
 			 * A Namecallback simply requests a username from the user.
 			 */
-			if (arg0[i] instanceof NameCallback) {
-				NameCallback user = (NameCallback) arg0[i];
+			if (callbacks[i] instanceof NameCallback) {
+				NameCallback user = (NameCallback) callbacks[i];
 				// Get username
 				System.out.print(user.getPrompt() + " ");
 				// read in the username from the console and set the username.
@@ -31,8 +31,8 @@ public class CallBackHandlerExample implements CallbackHandler {
 				// one call back done. 
 				numCallBacks++;
 				
-			} else if (arg0[i] instanceof PasswordCallback) {
-				PasswordCallback userpass = (PasswordCallback) arg0[i];
+			} else if (callbacks[i] instanceof PasswordCallback) {
+				PasswordCallback userpass = (PasswordCallback) callbacks[i];
 				//Get password from user.
 				System.out.print(userpass.getPrompt() + " ");
 				// setPassword requires a character array as parameter.
@@ -47,7 +47,7 @@ public class CallBackHandlerExample implements CallbackHandler {
 		 * or password, throw an exception.  
 		 */
 		if (numCallBacks < 2) {
-			throw new UnsupportedCallbackException(arg0[0], 
+			throw new UnsupportedCallbackException(callbacks[0], 
 					"Invalid or no callbacks.");
 		}
 	

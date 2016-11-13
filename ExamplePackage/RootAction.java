@@ -13,7 +13,6 @@ import javax.security.auth.Subject;
 
 public class RootAction {
 
-	
 		public void runAsRoot(Subject loggedUser) {
 			System.out.println("Running as root.");
 		}

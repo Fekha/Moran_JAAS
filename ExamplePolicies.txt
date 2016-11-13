@@ -10,6 +10,8 @@ grant codebase "file:./-" {
 grant {
 	permission java.io.FilePermission "example/*", "read";
 	permission java.io.FilePermission "example/test1", "write";
+	permission java.io.FilePermission "example/EmployeeDB.txt", "write";
+	permission java.io.FilePermission "example/AccountsDB.txt", "write";
 }; 
 
 

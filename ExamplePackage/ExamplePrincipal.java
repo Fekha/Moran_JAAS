@@ -13,7 +13,5 @@ public class ExamplePrincipal implements Principal {
 	}
 	public String getName() {
 		return name;
-		
 	}
-
 }
